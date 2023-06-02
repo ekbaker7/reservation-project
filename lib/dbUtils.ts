@@ -6,8 +6,13 @@ import {
   CuisineSearch,
 } from "./dbModels";
 import { calculateRatingsAverage } from "./utils";
+import { notFound } from "next/navigation";
 
-const prisma = new PrismaClient();
+let prisma;
+
+if (!prisma) {
+  prisma = new PrismaClient()
+}
 
 export async function fetchAllRestaurants(): Promise<RestaurantCardType[]> {
   const restaurantsRaw = await prisma.restaurant.findMany({
@@ -37,7 +42,7 @@ export async function fetchAllRestaurants(): Promise<RestaurantCardType[]> {
 export async function fetchRestaurantBySlug(
   slug: string
 ): Promise<RestaurantDetailsType> {
-  const restaurantRaw = await prisma.restaurant.findUniqueOrThrow({
+  const restaurantRaw = await prisma.restaurant.findUnique({
     where: {
       slug,
     },
@@ -50,6 +55,10 @@ export async function fetchRestaurantBySlug(
       reviews: true
     },
   });
+
+  if (!restaurantRaw) {
+    throw notFound()
+  }
 
   const restaurant = {
     ...restaurantRaw,

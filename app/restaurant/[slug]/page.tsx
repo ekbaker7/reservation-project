@@ -7,9 +7,14 @@ import Reviews from "./components/Reviews";
 import ReservationCard from "./components/ReservationCard";
 import { Fragment } from "react";
 import { fetchRestaurantBySlug } from "../../../lib/dbUtils";
+import { notFound } from "next/navigation";
 
 export default async function RestaurantDetails({params}: {params: {slug: string}}) {
   const restaurant = await fetchRestaurantBySlug(params.slug)
+
+  if (!restaurant) {
+    throw notFound()
+  }
 
   return (
     <Fragment>
