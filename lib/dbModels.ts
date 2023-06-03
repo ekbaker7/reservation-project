@@ -33,3 +33,21 @@ export interface RestaurantCardType {
   reviews: number;
   rating: number;
 }
+
+export interface NewUserType {
+  first_name: string;
+  last_name: string;
+  city: string;
+  password: string;
+  email: string;
+  phone: string;
+}
+
+export interface UserInformationType {
+  id: number;
+  first_name: string;
+  last_name: string;
+  city: string;
+  email: string;
+  phone: string;
+}
