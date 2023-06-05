@@ -52,7 +52,11 @@ export async function fetchRestaurantBySlug(
       images: true,
       description: true,
       slug: true,
-      reviews: true
+      reviews: true,
+      open_time: true,
+      close_time: true,
+      location: true,
+      main_image: true
     },
   });
 
