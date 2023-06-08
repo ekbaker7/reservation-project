@@ -47,7 +47,7 @@ function AuthContext({ children }: { children: React.ReactNode }) {
         });
       }
 
-      const response = await axios.get("/api/auth/me", {
+      const response = await axios.get(`${process.env.NEXT_PUBLIC_HOST}/api/auth/me`, {
         headers: {
           Authorization: `Bearer ${jwt}`
         }
