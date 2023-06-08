@@ -55,7 +55,7 @@ export async function generateJWT(email: string): Promise<string> {
 }
 
 export function decodeToken(token: string): {
-  payload: string | jwt.JwtPayload;
+  payload: jwt.JwtPayload | null;
   error: any;
 } {
   try {
