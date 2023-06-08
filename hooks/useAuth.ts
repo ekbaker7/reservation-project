@@ -21,7 +21,7 @@ const useAuth = () => {
   ) => {
     try {
       setAuthState({ loading: true, data: null, error: null });
-      const response = await axios.post("/api/auth/signin", {
+      const response = await axios.post(`${process.env.NEXT_PUBLIC_HOST}/api/auth/signin`, {
         email,
         password,
       });
@@ -39,7 +39,7 @@ const useAuth = () => {
 
   const signUp = async (newUser: NewUserType, handleClose: () => void) => {
     try {
-      const response = await axios.post("/api/auth/signup", { ...newUser });
+      const response = await axios.post(`${process.env.NEXT_PUBLIC_HOST}/api/auth/signup`, { ...newUser });
       setAuthState({ loading: false, data: response.data, error: null });
       handleClose();
     } catch (error) {

@@ -35,7 +35,7 @@ const useReservation = () => {
 
     try {
       const response = await axios.post(
-        `/api/restaurant/${slug}/reserve`,
+        `${process.env.NEXT_PUBLIC_HOST}/api/restaurant/${slug}/reserve`,
         {
           bookerEmail,
           bookerPhone,

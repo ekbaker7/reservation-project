@@ -23,7 +23,7 @@ const useAvailabilities = () => {
     setData(null);
 
     try {
-      const response = await axios.get(`/api/restaurant/${slug}/availability`, {
+      const response = await axios.get(`${process.env.NEXT_PUBLIC_HOST}/api/restaurant/${slug}/availability`, {
         params: {
           day,
           time,
