@@ -5,7 +5,7 @@ import Image from "next/image";
 
 function Stars({ rating }: { rating: number }) {
   const renderStars = () => {
-    let starArr = [];
+    let starArr: JSX.Element[] = [];
     let floatRating = parseFloat(rating.toFixed(1));
 
     for (let i = 1; i < 6; i++) {
