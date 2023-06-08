@@ -26,7 +26,7 @@ export default async function Search({
   let cuisines = await fetchCusines();
   let locations = await fetchLocations();
 
-  let noResultsArr = [];
+  let noResultsArr: JSX.Element[] = [];
 
   if (searchParams.city) {
     noResultsArr.push(
